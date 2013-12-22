@@ -1,4 +1,4 @@
-#CvPlatform [![Build Status](https://travis-ci.org/capapas/CvPlatform.png?branch=master)](https://travis-ci.org/capapas/CvPlatform)
+#CvPlatform [![Build Status](https://travis-ci.org/capapas/CvPlatform.png?branch=master)](https://travis-ci.org/capapas/CvPlatform) [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/capapas/CvPlatform/badges/quality-score.png?s=0d76dbd5c1c24ce8a498429e9ffef22397d5d8b5)](https://scrutinizer-ci.com/g/capapas/CvPlatform/)
 ##Introduction
 Plateforme pour toute personne souhaitant créer et mettre en forme son Cv. Le site permet aussi de le récuperer au format PDF grâce au bundle ``MhorCvToPdfBundle``
 
