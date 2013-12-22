@@ -1,6 +1,7 @@
 {
     "name": "capapas/cv-platform",
-    "license": "property of Esgi",
+    "description": "Manage your resumé",
+    "license": "proprietary",
     "type": "project",
     "description": "",
     "autoload": {
@@ -29,8 +30,8 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "mopa/bootstrap-bundle": "v3.0.0-beta2",
         "twbs/bootstrap": "v3.0.0",
-        "knplabs/knp-paginator-bundle": "dev-master",
-        "knplabs/knp-menu-bundle": "dev-master",
+        "knplabs/knp-paginator-bundle": "2.3.*",
+        "knplabs/knp-menu-bundle": "2.0.x-dev",
         "knplabs/knp-menu": "2.0.*@dev",
         "mhor/cv-to-pdf-bundle": "dev-master"
     },
