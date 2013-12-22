@@ -1,9 +1,8 @@
 {
     "name": "capapas/cv-platform",
-    "description": "Manage your resumé",
     "license": "proprietary",
     "type": "project",
-    "description": "",
+    "description": "Manage resumé",
     "autoload": {
         "psr-0": { "": "src/" }
     }
@@ -18,7 +17,7 @@
         "symfony/symfony": "2.3.*",
         "doctrine/orm": ">=2.2.3,<2.4-dev",
         "doctrine/doctrine-bundle": "1.2.*",
-        "doctrine/doctrine-fixtures-bundle": "dev-master",
+        "doctrine/doctrine-fixtures-bundle": "2.2.*@dev",
         "twig/extensions": "1.0.*",
         "symfony/assetic-bundle": "2.3.*",
         "symfony/swiftmailer-bundle": "2.3.*",
