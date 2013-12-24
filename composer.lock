@@ -1434,12 +1434,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mhor/MhorCvToPdfBundle.git",
-                "reference": "6d81febeefc6883aa4e11094336cb7e633e7c852"
+                "reference": "7f28780d19854646cc8ff1f0e5e82879da4f81c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mhor/MhorCvToPdfBundle/zipball/6d81febeefc6883aa4e11094336cb7e633e7c852",
-                "reference": "6d81febeefc6883aa4e11094336cb7e633e7c852",
+                "url": "https://api.github.com/repos/mhor/MhorCvToPdfBundle/zipball/7f28780d19854646cc8ff1f0e5e82879da4f81c4",
+                "reference": "7f28780d19854646cc8ff1f0e5e82879da4f81c4",
                 "shasum": ""
             },
             "require": {
@@ -1476,7 +1476,7 @@
                 "source": "https://github.com/mhor/MhorCvToPdfBundle/tree/master",
                 "issues": "https://github.com/mhor/MhorCvToPdfBundle/issues"
             },
-            "time": "2013-12-22 21:02:15"
+            "time": "2013-12-23 21:32:20"
         },
         {
             "name": "monolog/monolog",

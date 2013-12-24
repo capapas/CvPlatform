@@ -2,13 +2,13 @@
 
 {% block title %}CvPlatform{% endblock %}
 
-{% block head_style %}
-{% stylesheets
-    '@MopaBootstrapBundle/Resources/public/less/mopabootstrapbundle.less'
+{% block head_script %}
+{% javascripts
+    'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'
 %}
-<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
-{% endstylesheets %}
-{% endblock head_style %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endblock head_script %}
 
 {% block navbar %}
 {% embed '@MopaBootstrap/Navbar/navbar.html.twig' with { fixedTop: true, inverse: true, id: 'navbar-brand' } %}
@@ -17,5 +17,8 @@
     {% endblock %}
 {% endembed %}
 {% endblock navbar %}
+        
+ {% block headline %}{% endblock headline %}
+{% block content %}{% endblock content %}        
 
 {% block footer %}Copyright Mhor & DayBay{% endblock %}
