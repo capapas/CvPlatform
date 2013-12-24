@@ -1,2 +1,21 @@
 {% extends 'MopaBootstrapBundle::base.html.twig' %}
+
 {% block title %}CvPlatform{% endblock %}
+
+{% block head_style %}
+{% stylesheets
+    '@MopaBootstrapBundle/Resources/public/less/mopabootstrapbundle.less'
+%}
+<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+{% endstylesheets %}
+{% endblock head_style %}
+
+{% block navbar %}
+{% embed '@MopaBootstrap/Navbar/navbar.html.twig' with { fixedTop: true, inverse: true, id: 'navbar-brand' } %}
+    {% block brand %}
+        <a class="navbar-brand" href="{{ path('cvplatform_front_default_index') }}">CvPlatform</a>
+    {% endblock %}
+{% endembed %}
+{% endblock navbar %}
+
+{% block footer %}Copyright Mhor & DayBay{% endblock %}
