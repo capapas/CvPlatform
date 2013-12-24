@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Endroid\Bundle\QrCodeBundle\EndroidQrCodeBundle(),
+            new CvPlatform\FrontBundle\CvPlatformFrontBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

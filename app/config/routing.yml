@@ -1,3 +1,8 @@
+cv_platform_front:
+    resource: "@CvPlatformFrontBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 cv_platform_user:
     resource: "@CvPlatformUserBundle/Controller/"
     type:     annotation
