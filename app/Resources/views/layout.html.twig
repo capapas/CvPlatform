@@ -15,10 +15,14 @@
     {% block brand %}
         <a class="navbar-brand" href="{{ path('cvplatform_front_default_index') }}">CvPlatform</a>
     {% endblock %}
+    {% block menu %}
+        {{ mopa_bootstrap_menu('CvPlatformFrontBundle:Builder:mainMenu') }}
+    {% endblock %}
+     
 {% endembed %}
 {% endblock navbar %}
         
- {% block headline %}{% endblock headline %}
+{% block headline %}{% endblock headline %}
 {% block content %}{% endblock content %}        
 
 {% block footer %}
