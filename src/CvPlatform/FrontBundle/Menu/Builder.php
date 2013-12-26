@@ -1,4 +1,5 @@
 <?php
+
 namespace CvPlatform\FrontBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
@@ -10,12 +11,37 @@ class Builder extends ContainerAware
     {
         $menu = $factory->createItem('root', array(
             'navbar' => true,
+            'pull-right' => true
         ));
 
-        $menu->addChild('Sign In', array('route' => 'fos_user_security_login'));
-        $menu->addChild('Sign up', array('route' => 'fos_user_registration_register'));
-        $menu->addChild('Logout', array('route' => 'fos_user_security_logout'));
-        return $menu;
+        if ($this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
 
+            $dropdown = $menu->addChild('Profile', array(
+                'dropdown' => true,
+                'caret' => true,
+            ));
+
+            $dropdown->addChild('See Profile', array(
+                'route' => 'fos_user_profile_show'
+                )
+            );
+            $dropdown->addChild('Logout', array(
+                'route' => 'fos_user_security_logout'
+                )
+            );
+
+        } else {
+
+            $menu->addChild('Sign In', array(
+                'route' => 'fos_user_security_login'
+                )
+            );
+
+            $menu->addChild('Sign up', array(
+                'route' => 'fos_user_registration_register'
+                )
+            );
+        }
+        return $menu;
     }
 }
