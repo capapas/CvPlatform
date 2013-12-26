@@ -1,0 +1,40 @@
+{% extends 'MopaBootstrapBundle::base.html.twig' %}
+
+{% block title %}CvPlatform{% endblock %}
+
+{% block head_script %}
+{% javascripts
+    'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'
+%}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endblock head_script %}
+
+{% block navbar %}
+{% embed '@MopaBootstrap/Navbar/navbar.html.twig' with { fixedTop: true, inverse: true, id: 'navbar-brand' } %}
+    {% block brand %}
+        <a class="navbar-brand" href="{{ path('cvplatform_front_default_index') }}">CvPlatform</a>
+    {% endblock %}
+    {% block menu %}
+        {{ mopa_bootstrap_menu('CvPlatformFrontBundle:Builder:mainMenu') }}
+    {% endblock %}
+     
+{% endembed %}
+{% endblock navbar %}
+        
+{% block headline %}{% endblock headline %}
+{% block content %}{% endblock content %}        
+
+{% block footer %}
+    <footer>
+        <div id="footer" class="container">
+            <nav class="navbar navbar-default navbar-fixed-bottom">
+                <div class="navbar-inner navbar-content-center">
+                    <p class="text-muted text-center credit" style="margin-top: 15px">
+                        Copyright <a href="https://github.com/mhor">Mhor</a> & <a href="https://github.com/Daybay">DayBay</a>
+                    </p>
+                </div>
+            </nav>
+        </div>
+    </footer>
+{% endblock %}
