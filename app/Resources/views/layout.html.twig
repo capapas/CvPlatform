@@ -18,12 +18,14 @@
     {% block menu %}
         {{ mopa_bootstrap_menu('CvPlatformFrontBundle:Builder:mainMenu') }}
     {% endblock %}
-     
+
 {% endembed %}
 {% endblock navbar %}
-        
+
 {% block headline %}{% endblock headline %}
-{% block content %}{% endblock content %}        
+{% block content %}
+        {% block sideMenu %}{% endblock sideMenu %}
+{% endblock content %}
 
 {% block footer %}
     <footer>

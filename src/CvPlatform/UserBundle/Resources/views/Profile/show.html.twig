@@ -1,0 +1,19 @@
+{% extends 'CvPlatformUserBundle::layout.html.twig' %}
+
+{% block content %}
+        <div style =  "width: 120px">
+        {% block sideMenu %}
+            {{ mopa_bootstrap_menu(
+                    'CvPlatformFrontBundle:Builder:resumeSideMenu',
+                        {
+                            'automenu': 'pills',
+                            'stacked':true
+                        })
+            }}
+        {% endblock sideMenu %}
+        </div>
+        {% block fos_user_content %}
+            {% include "FOSUserBundle:Profile:show_content.html.twig" %}
+        {% endblock fos_user_content %}
+{% endblock content %}
+
