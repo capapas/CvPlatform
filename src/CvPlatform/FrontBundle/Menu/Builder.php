@@ -44,4 +44,27 @@ class Builder extends ContainerAware
         }
         return $menu;
     }
+
+    public function resumeSideMenu(FactoryInterface $factory, array $options)
+    {
+        $menu = $factory->createItem('root');
+
+        $menu->addChild('Personal Information', array(
+            'route' => 'fos_user_profile_show',
+        ));
+
+        $menu->addChild('Skills', array(
+            'route' => 'fos_user_profile_show',
+        ));
+
+        $menu->addChild('Experiences', array(
+            'route' => 'fos_user_profile_show',
+        ));
+
+        $menu->addChild('Others', array(
+            'route' => 'fos_user_profile_show',
+        ));
+
+        return $menu;
+    }
 }
