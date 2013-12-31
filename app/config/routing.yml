@@ -3,11 +3,6 @@ cv_platform_front:
     type:     annotation
     prefix:   /
 
-cv_platform_user:
-    resource: "@CvPlatformUserBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
