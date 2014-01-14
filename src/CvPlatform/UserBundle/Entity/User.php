@@ -2,6 +2,7 @@
 
 namespace CvPlatform\UserBundle\Entity;
 
+use Mhor\CvToPdfBundle\Entity\Person;
 use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="cvplatform_user")
  * @ORM\Entity(repositoryClass="CvPlatform\UserBundle\Entity\UserRepository")
  */
-class User extends BaseUser
+class User extends BaseUser implements Person
 {
     /**
      * @var integer
@@ -84,11 +85,17 @@ class User extends BaseUser
      */
     protected $zipcode;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="country", type="string", nullable=true)
+     */
+    protected $country;
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -104,14 +111,14 @@ class User extends BaseUser
     public function setBirthdate($birthdate)
     {
         $this->birthdate = $birthdate;
-    
+
         return $this;
     }
 
     /**
      * Get birthdate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getBirthdate()
     {
@@ -127,14 +134,14 @@ class User extends BaseUser
     public function setLastname($lastname)
     {
         $this->lastname = $lastname;
-    
+
         return $this;
     }
 
     /**
      * Get lastname
      *
-     * @return string 
+     * @return string
      */
     public function getLastname()
     {
@@ -150,14 +157,14 @@ class User extends BaseUser
     public function setFirstname($firstname)
     {
         $this->firstname = $firstname;
-    
+
         return $this;
     }
 
     /**
      * Get firstname
      *
-     * @return string 
+     * @return string
      */
     public function getFirstname()
     {
@@ -173,14 +180,14 @@ class User extends BaseUser
     public function setUrl($url)
     {
         $this->url = $url;
-    
+
         return $this;
     }
 
     /**
      * Get url
      *
-     * @return string 
+     * @return string
      */
     public function getUrl()
     {
@@ -196,14 +203,14 @@ class User extends BaseUser
     public function setPhone($phone)
     {
         $this->phone = $phone;
-    
+
         return $this;
     }
 
     /**
      * Get phone
      *
-     * @return string 
+     * @return string
      */
     public function getPhone()
     {
@@ -219,14 +226,14 @@ class User extends BaseUser
     public function setCellphone($cellphone)
     {
         $this->cellphone = $cellphone;
-    
+
         return $this;
     }
 
     /**
      * Get cellphone
      *
-     * @return string 
+     * @return string
      */
     public function getCellphone()
     {
@@ -242,14 +249,14 @@ class User extends BaseUser
     public function setStreet($street)
     {
         $this->street = $street;
-    
+
         return $this;
     }
 
     /**
      * Get street
      *
-     * @return string 
+     * @return string
      */
     public function getStreet()
     {
@@ -265,14 +272,14 @@ class User extends BaseUser
     public function setCity($city)
     {
         $this->city = $city;
-    
+
         return $this;
     }
 
     /**
      * Get city
      *
-     * @return string 
+     * @return string
      */
     public function getCity()
     {
@@ -288,17 +295,40 @@ class User extends BaseUser
     public function setZipcode($zipcode)
     {
         $this->zipcode = $zipcode;
-    
+
         return $this;
     }
 
     /**
      * Get zipcode
      *
-     * @return string 
+     * @return string
      */
     public function getZipcode()
     {
         return $this->zipcode;
+    }
+
+    /**
+     * Set country
+     *
+     * @param string $zipcode
+     * @return User
+     */
+    public function setCountry($country)
+    {
+        $this->zipcode = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
     }
 }
