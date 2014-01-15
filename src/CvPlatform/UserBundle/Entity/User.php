@@ -5,6 +5,7 @@ namespace CvPlatform\UserBundle\Entity;
 use Mhor\CvToPdfBundle\Entity\Person;
 use CvPlatform\FrontBundle\Entity\Experience;
 use CvPlatform\FrontBundle\Entity\Website;
+use CvPlatform\FrontBundle\Entity\LangLevel;
 use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -94,7 +95,17 @@ class User extends BaseUser implements Person
      */
     protected $country;
 
-    /**
+	/**
+     * @var ArrayCollection
+     * @ORM\OneToMany(
+     *  targetEntity="CvPlatform\FrontBundle\Entity\LangLevel",
+     *  mappedBy="user"
+     * )
+     *
+     */
+    protected $langLevels;
+
+	/**
      * @var ArrayCollection
      * @ORM\OneToMany(
      *  targetEntity="CvPlatform\FrontBundle\Entity\Website",
@@ -118,6 +129,7 @@ class User extends BaseUser implements Person
     {
         $this->experiences = new ArrayCollection();
         $this->websites = new ArrayCollection();
+		$this->langLevels = new ArrayCollection();
     }
 
     /**
@@ -360,7 +372,7 @@ class User extends BaseUser implements Person
         return $this->country;
     }
 
-    public function addExperience(Experience $experience)
+	public function addExperience(Experience $experience)
     {
         $this->experiences[] = $experience;
         return $this;
@@ -390,5 +402,21 @@ class User extends BaseUser implements Person
     public function getWebsites()
     {
         return $this->websites;
+    }
+
+	public function addLangLevel(LangLevel $langLevel)
+    {
+        $this->langLevels[] = $langLevel;
+        return $this;
+    }
+
+    public function removeLangLevel(LangLevel $langLevel)
+    {
+        $this->langLevels->removeElement($langLevel);
+    }
+
+    public function getLangLevels()
+    {
+        return $this->langLevels;
     }
 }
