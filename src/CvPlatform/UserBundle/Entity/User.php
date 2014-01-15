@@ -3,8 +3,10 @@
 namespace CvPlatform\UserBundle\Entity;
 
 use Mhor\CvToPdfBundle\Entity\Person;
+use CvPlatform\FrontBundle\Entity\LangLevel;
 use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -91,6 +93,16 @@ class User extends BaseUser implements Person
      * @ORM\Column(name="country", type="string", nullable=true)
      */
     protected $country;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(
+     *  targetEntity="CvPlatform\FrontBundle\Entity\LangLevel",
+     *  mappedBy="user"
+     * )
+     *
+     */
+    protected $langLevels;
 
     /**
      * Get id
@@ -330,5 +342,21 @@ class User extends BaseUser implements Person
     public function getCountry()
     {
         return $this->country;
+    }
+
+    public function addLangLevel(LangLevel $langLevel)
+    {
+        $this->langLevels[] = $langLevel;
+        return $this;
+    }
+
+    public function removeLangLevel(LangLevel $langLevel)
+    {
+        $this->langLevels->removeElement($langLevel);
+    }
+
+    public function getLangLevels()
+    {
+        return $this->langLevels;
     }
 }
