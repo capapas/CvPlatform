@@ -95,7 +95,7 @@ class User extends BaseUser implements Person
      */
     protected $country;
 
-	/**
+    /**
      * @var ArrayCollection
      * @ORM\OneToMany(
      *  targetEntity="CvPlatform\FrontBundle\Entity\LangLevel",
@@ -105,7 +105,7 @@ class User extends BaseUser implements Person
      */
     protected $langLevels;
 
-	/**
+    /**
      * @var ArrayCollection
      * @ORM\OneToMany(
      *  targetEntity="CvPlatform\FrontBundle\Entity\Website",
@@ -129,7 +129,7 @@ class User extends BaseUser implements Person
     {
         $this->experiences = new ArrayCollection();
         $this->websites = new ArrayCollection();
-		$this->langLevels = new ArrayCollection();
+        $this->langLevels = new ArrayCollection();
     }
 
     /**
@@ -372,7 +372,7 @@ class User extends BaseUser implements Person
         return $this->country;
     }
 
-	public function addExperience(Experience $experience)
+    public function addExperience(Experience $experience)
     {
         $this->experiences[] = $experience;
         return $this;
@@ -404,7 +404,7 @@ class User extends BaseUser implements Person
         return $this->websites;
     }
 
-	public function addLangLevel(LangLevel $langLevel)
+    public function addLangLevel(LangLevel $langLevel)
     {
         $this->langLevels[] = $langLevel;
         return $this;
