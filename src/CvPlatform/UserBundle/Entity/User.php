@@ -3,13 +3,14 @@
 namespace CvPlatform\UserBundle\Entity;
 
 use Mhor\CvToPdfBundle\Entity\Person;
+use CvPlatform\FrontBundle\Entity\Experience;
+use CvPlatform\FrontBundle\Entity\Website;
 use CvPlatform\FrontBundle\Entity\LangLevel;
 use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity
  * @ORM\Table(name="cvplatform_user")
  * @ORM\Entity(repositoryClass="CvPlatform\UserBundle\Entity\UserRepository")
  */
@@ -103,6 +104,33 @@ class User extends BaseUser implements Person
      *
      */
     protected $langLevels;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(
+     *  targetEntity="CvPlatform\FrontBundle\Entity\Website",
+     *  mappedBy="user"
+     * )
+     *
+     */
+    protected $websites;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(
+     *  targetEntity="CvPlatform\FrontBundle\Entity\Experience",
+     *  mappedBy="user"
+     * )
+     *
+     */
+    protected $experiences;
+
+    public function __construct()
+    {
+        $this->experiences = new ArrayCollection();
+        $this->websites = new ArrayCollection();
+        $this->langLevels = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -342,6 +370,38 @@ class User extends BaseUser implements Person
     public function getCountry()
     {
         return $this->country;
+    }
+
+    public function addExperience(Experience $experience)
+    {
+        $this->experiences[] = $experience;
+        return $this;
+    }
+
+    public function removeExperience(Experience $experience)
+    {
+        $this->experiences->removeElement($experience);
+    }
+
+    public function getExperiences()
+    {
+        return $this->experiences;
+    }
+
+    public function addWebsite(Website $website)
+    {
+        $this->websites[] = $website;
+        return $this;
+    }
+
+    public function removeWebsite(Website $website)
+    {
+        $this->websites->removeElement($website);
+    }
+
+    public function getWebsites()
+    {
+        return $this->websites;
     }
 
     public function addLangLevel(LangLevel $langLevel)
