@@ -29,6 +29,8 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "mopa/bootstrap-bundle": "v3.0.0-beta3",
         "twbs/bootstrap": "v3.0.0",
+        "bootstrap-select/bootstrap-select": "dev-master",
+        "bootstrap-select/bootstrap-select": "1.4.2",
         "knplabs/knp-paginator-bundle": "2.3.*",
         "knplabs/knp-menu-bundle": "2.0.x-dev",
         "knplabs/knp-menu": "2.0.*@dev",
