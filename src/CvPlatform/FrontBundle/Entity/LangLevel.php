@@ -2,6 +2,8 @@
 namespace CvPlatform\FrontBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 use CvPlatform\FrontBundle\Entity\Lang;
 use CvPlatform\UserBundle\Entity\User;
 
@@ -28,9 +30,16 @@ class LangLevel
     private $lang;
 
     /**
-     * @var string
+     * @var integer
      *
      * @ORM\Column(name="level", type="integer")
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 5,
+     *      minMessage = "Vous niveau ne peut pas être inférieur à 1",
+     *      maxMessage = "Vous ne devez pas dépasser 5"
+     * )
+     * 
      */
     private $level;
 
@@ -57,7 +66,7 @@ class LangLevel
     /**
      * Set level
      *
-     * @param string $level
+     * @param integer $level
      * @return LangLevel
      */
     public function setLevel($level)
@@ -70,7 +79,7 @@ class LangLevel
     /**
      * Get libel
      *
-     * @return int
+     * @return integer
      */
     public function getLevel()
     {
@@ -80,7 +89,7 @@ class LangLevel
     /**
      * Set lang
      *
-     * @param string $lang
+     * @param Lang $lang
      * @return LangLevel
      */
     public function setLang(Lang $lang)
@@ -97,7 +106,7 @@ class LangLevel
      */
     public function getLang()
     {
-        return $this->Lang;
+        return $this->lang;
     }
 
     /**
