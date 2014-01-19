@@ -2,7 +2,7 @@
 
 namespace CvPlatform\UserBundle\Entity;
 
-use Mhor\CvToPdfBundle\Entity\Person;
+use Mhor\CvToPdfBundle\Model\Person;
 use CvPlatform\FrontBundle\Entity\Experience;
 use CvPlatform\FrontBundle\Entity\Website;
 use CvPlatform\FrontBundle\Entity\LangLevel;
