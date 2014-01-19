@@ -127,6 +127,7 @@ class User extends BaseUser implements Person
 
     public function __construct()
     {
+        parent::__construct();
         $this->experiences = new ArrayCollection();
         $this->websites = new ArrayCollection();
         $this->langLevels = new ArrayCollection();
