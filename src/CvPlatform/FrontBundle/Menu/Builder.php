@@ -49,16 +49,20 @@ class Builder extends ContainerAware
     {
         $menu = $factory->createItem('root');
 
-        $menu->addChild('Personal Information', array(
-            'route' => 'fos_user_profile_show',
+        $menu->addChild('Personal Informations', array(
+            'route' => 'edit_user_personal_informations',
         ));
 
         $menu->addChild('Skills', array(
-            'route' => 'fos_user_profile_show',
+            'route' => 'edit_user_skill',
         ));
 
         $menu->addChild('Experiences', array(
-            'route' => 'fos_user_profile_show',
+            'route' => 'edit_user_experience',
+        ));
+
+        $menu->addChild('Langs', array(
+            'route' => 'edit_user_lang',
         ));
 
         $menu->addChild('Others', array(
