@@ -6,25 +6,26 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class SkillType extends AbstractType
+class WebsiteType extends AbstractType
 {
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('libel', 'text')
+            ->add('title', 'text')
+            ->add('url', 'text')
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'CvPlatform\FrontBundle\Entity\Skill'
+            'data_class' => 'CvPlatform\FrontBundle\Entity\Website'
         ));
     }
 
     public function getName()
     {
-        return 'cvplatform_userbundle_skilltype';
+        return 'cvplatform_userbundle_websitetype';
     }
 }

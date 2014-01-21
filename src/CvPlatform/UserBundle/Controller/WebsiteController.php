@@ -4,30 +4,31 @@ namespace CvPlatform\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use CvPlatform\UserBundle\Form\Type\LangLevelType;
-use CvPlatform\FrontBundle\Entity\LangLevel;
+use CvPlatform\UserBundle\Form\Type\WebsiteType;
+use CvPlatform\FrontBundle\Entity\Website;
 
-class LangLevelController extends Controller
+class WebsiteController extends Controller
 {
     /**
-     * @Route("/langs", name="edit_user_lang")
+     * @Route("/websites", name="edit_user_website")
      */
     public function indexAction()
     {
 
-        $lang =  new LangLevel();
-        $form = $this->createForm(new LangLevelType(), $lang);
+        $website =  new Website();
+
+        $form = $this->createForm(new WebsiteType(), $website);
 
         if (true === $this->processForm($form)) {
             return $this
                 ->flush()
-                ->successFlash('Informations updated')
-                ->redirect(array("edit_user_lang"))
+                ->successFlash('Websites updated')
+                ->redirect(array("edit_user_website"))
             ;
         }
 
         return $this->render(
-            'CvPlatformUserBundle:Profile:lang.html.twig',
+            'CvPlatformUserBundle:Profile:website.html.twig',
             array(
                 'form' => $form->createView(),
             )
@@ -36,16 +37,16 @@ class LangLevelController extends Controller
     }
 
     /**
-     * @Route("/delete-lang", name="delete_user_lang")
+     * @Route("/delete-website", name="delete_user_website")
      */
     public function deleteAction()
     {
 
-        $exp =  new Lang();
+        $exp =  new Website();
 
-        $form = $this->createForm(new LangType(), $exp);
+        $form = $this->createForm(new WebsiteType(), $exp);
         return $this->render(
-            'CvPlatformUserBundle:Profile:lang.html.twig',
+            'CvPlatformUserBundle:Profile:website.html.twig',
             array(
                 'form' => $form->createView(),
             )

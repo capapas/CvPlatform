@@ -36,6 +36,23 @@ class SkillController extends Controller
 
     }
 
+    /**
+     * @Route("/delete-skill", name="delete_user_skill")
+     */
+    public function deleteAction()
+    {
+
+        $exp =  new Skill();
+
+        $form = $this->createForm(new SkillType(), $exp);
+        return $this->render(
+            'CvPlatformUserBundle:Profile:skill.html.twig',
+            array(
+                'form' => $form->createView(),
+            )
+        );
+    }
+
     protected function processForm($form)
     {
         $request = $this->getRequest();

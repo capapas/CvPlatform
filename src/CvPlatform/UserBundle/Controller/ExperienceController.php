@@ -35,6 +35,23 @@ class ExperienceController extends Controller
 
     }
 
+    /**
+     * @Route("/delete-experience", name="delete_user_experience")
+     */
+    public function deleteAction()
+    {
+
+        $exp =  new Experience();
+
+        $form = $this->createForm(new ExperienceType(), $exp);
+        return $this->render(
+            'CvPlatformUserBundle:Profile:experience.html.twig',
+            array(
+                'form' => $form->createView(),
+            )
+        );
+    }
+
     protected function processForm($form)
     {
         $request = $this->getRequest();

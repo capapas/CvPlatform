@@ -53,6 +53,10 @@ class Builder extends ContainerAware
             'route' => 'edit_user_personal_informations',
         ));
 
+        $menu->addChild('Websites', array(
+            'route' => 'edit_user_website',
+        ));
+
         $menu->addChild('Skills', array(
             'route' => 'edit_user_skill',
         ));
