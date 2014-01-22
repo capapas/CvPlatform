@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use CvPlatform\FrontBundle\Entity\Experience;
 use CvPlatform\UserBundle\Form\Type\ExperienceType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class ExperienceController extends Controller
 {
@@ -14,16 +15,14 @@ class ExperienceController extends Controller
      */
     public function indexAction()
     {
+        $em = $this->getDoctrine()->getManager();
         $exp =  new Experience();
-
         $form = $this->createForm(new ExperienceType(), $exp);
 
         if (true === $this->processForm($form)) {
-            return $this
-                ->flush()
-                ->successFlash('Experiences updated')
-                ->redirect(array("edit_user_experience"))
-            ;
+            $em->persist($exp);
+            $em->flush();
+            return $this->redirect($this->generateUrl("edit_user_experience"));
         }
 
         return $this->render(
@@ -32,11 +31,11 @@ class ExperienceController extends Controller
                 'form' => $form->createView(),
             )
         );
-
     }
 
     /**
      * @Route("/delete-experience", name="delete_user_experience")
+     * @Method({"POST"})
      */
     public function deleteAction()
     {

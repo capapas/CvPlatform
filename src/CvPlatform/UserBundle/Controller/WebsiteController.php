@@ -4,6 +4,7 @@ namespace CvPlatform\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use CvPlatform\UserBundle\Form\Type\WebsiteType;
 use CvPlatform\FrontBundle\Entity\Website;
 
@@ -15,16 +16,14 @@ class WebsiteController extends Controller
     public function indexAction()
     {
 
+        $em = $this->getDoctrine()->getManager();
         $website =  new Website();
-
         $form = $this->createForm(new WebsiteType(), $website);
 
         if (true === $this->processForm($form)) {
-            return $this
-                ->flush()
-                ->successFlash('Websites updated')
-                ->redirect(array("edit_user_website"))
-            ;
+            $em->persist($website);
+            $em->flush();
+            return $this->redirect($this->generateUrl("edit_user_website"));
         }
 
         return $this->render(
@@ -38,6 +37,7 @@ class WebsiteController extends Controller
 
     /**
      * @Route("/delete-website", name="delete_user_website")
+     * @Method({"POST"})
      */
     public function deleteAction()
     {

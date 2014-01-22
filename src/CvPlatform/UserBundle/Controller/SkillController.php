@@ -4,6 +4,7 @@ namespace CvPlatform\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use CvPlatform\UserBundle\Form\Type\SkillType;
 use CvPlatform\FrontBundle\Entity\Skill;
 
@@ -14,17 +15,14 @@ class SkillController extends Controller
      */
     public function indexAction()
     {
-
+        $em = $this->getDoctrine()->getManager();
         $skill =  new Skill();
-
         $form = $this->createForm(new SkillType(), $skill);
 
         if (true === $this->processForm($form)) {
-            return $this
-                ->flush()
-                ->successFlash('Skills updated')
-                ->redirect(array("edit_user_skill"))
-            ;
+            $em->persist($skill);
+            $em->flush();
+            return $this->redirect($this->generateUrl("edit_user_skill"));
         }
 
         return $this->render(
@@ -33,7 +31,6 @@ class SkillController extends Controller
                 'form' => $form->createView(),
             )
         );
-
     }
 
     /**

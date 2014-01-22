@@ -4,6 +4,7 @@ namespace CvPlatform\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use CvPlatform\UserBundle\Form\Type\PersonalInformationType;
 use CvPlatform\UserBundle\Entity\User;
 
@@ -19,15 +20,12 @@ class UserInformationsController extends Controller
         $user->setLastname("Mir");
         $user->setUsername('mirmoze');
         $user->setEmail('mii@gmail.com');
-
+        $em = $this->getDoctrine()->getManager();
         $form = $this->createForm(new PersonalInformationType(), $user);
 
         if (true === $this->processForm($form)) {
-            return $this
-                ->flush()
-                ->successFlash('Informations updated')
-                ->redirect(array("show_user_personal_informations"))
-            ;
+            $em->flush();
+            return $this->redirect($this->generateUrl("edit_user_personal_informations"));
         }
 
         return $this->render(
@@ -36,7 +34,6 @@ class UserInformationsController extends Controller
                 'form' => $form->createView(),
             )
         );
-
     }
 
     protected function processForm($form)

@@ -12,7 +12,7 @@ class LangLevelType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('level', 'text')
+            ->add('level', 'integer')
         ;
     }
 

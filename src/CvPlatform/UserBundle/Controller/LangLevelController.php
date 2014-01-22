@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use CvPlatform\UserBundle\Form\Type\LangLevelType;
 use CvPlatform\FrontBundle\Entity\LangLevel;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+
 
 class LangLevelController extends Controller
 {
@@ -14,16 +16,14 @@ class LangLevelController extends Controller
      */
     public function indexAction()
     {
-
+        $em = $this->getDoctrine()->getManager();
         $lang =  new LangLevel();
         $form = $this->createForm(new LangLevelType(), $lang);
 
         if (true === $this->processForm($form)) {
-            return $this
-                ->flush()
-                ->successFlash('Informations updated')
-                ->redirect(array("edit_user_lang"))
-            ;
+            $em->persist($lang);
+            $em->flush();
+            return $this->redirect($this->generateUrl("edit_user_lang"));
         }
 
         return $this->render(
@@ -32,11 +32,11 @@ class LangLevelController extends Controller
                 'form' => $form->createView(),
             )
         );
-
     }
 
     /**
      * @Route("/delete-lang", name="delete_user_lang")
+     * @Method({"POST"})
      */
     public function deleteAction()
     {
@@ -64,7 +64,7 @@ class LangLevelController extends Controller
                 return true;
             }
             else {
-                $this->errorFlash('flash.error');
+                //$this->errorFlash('flash.error');
             }
         }
 
