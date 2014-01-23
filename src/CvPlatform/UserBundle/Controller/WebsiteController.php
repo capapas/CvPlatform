@@ -15,12 +15,14 @@ class WebsiteController extends Controller
      */
     public function indexAction()
     {
-
+        $user= $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
+        $websites = $em->getRepository('CvPlatform\FrontBundle\Entity\Website')->findAll();
         $website =  new Website();
         $form = $this->createForm(new WebsiteType(), $website);
 
         if (true === $this->processForm($form)) {
+            $website->setUser($user);
             $em->persist($website);
             $em->flush();
             return $this->redirect($this->generateUrl("edit_user_website"));
@@ -29,6 +31,7 @@ class WebsiteController extends Controller
         return $this->render(
             'CvPlatformUserBundle:Profile:website.html.twig',
             array(
+                'websites' => $websites,
                 'form' => $form->createView(),
             )
         );
@@ -41,7 +44,6 @@ class WebsiteController extends Controller
      */
     public function deleteAction()
     {
-
         $exp =  new Website();
 
         $form = $this->createForm(new WebsiteType(), $exp);

@@ -2,6 +2,15 @@
 {% block personal_informations%}
 SKILLs
 <div class="well">
+    <div class="skills">
+        {% for skill in skills %}
+            <div class="skill">
+                {{ skill.libel }}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="well">
     <form method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
         <input type="submit" class="btn btn-primary" />

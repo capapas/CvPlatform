@@ -15,11 +15,14 @@ class SkillController extends Controller
      */
     public function indexAction()
     {
+        $user= $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
+        $skills = $em->getRepository('CvPlatform\FrontBundle\Entity\Skill')->findAll();
         $skill =  new Skill();
         $form = $this->createForm(new SkillType(), $skill);
 
         if (true === $this->processForm($form)) {
+            $skill->setUser($user);
             $em->persist($skill);
             $em->flush();
             return $this->redirect($this->generateUrl("edit_user_skill"));
@@ -28,6 +31,7 @@ class SkillController extends Controller
         return $this->render(
             'CvPlatformUserBundle:Profile:skill.html.twig',
             array(
+                'skills' => $skills,
                 'form' => $form->createView(),
             )
         );

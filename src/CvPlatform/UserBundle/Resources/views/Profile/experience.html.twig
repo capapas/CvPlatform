@@ -2,6 +2,15 @@
 {% block personal_informations%}
 EXP
 <div class="well">
+    <div class="experiences">
+        {% for experience in experiences %}
+            <div class="experience">
+                {{ experience.what }}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="well">
     <form method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
         <input type="submit" class="btn btn-primary" />

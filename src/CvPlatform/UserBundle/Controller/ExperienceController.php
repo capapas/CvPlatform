@@ -15,11 +15,14 @@ class ExperienceController extends Controller
      */
     public function indexAction()
     {
+        $user= $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
+        $experiences = $em->getRepository('CvPlatform\FrontBundle\Entity\Experience')->findAll();
         $exp =  new Experience();
         $form = $this->createForm(new ExperienceType(), $exp);
 
         if (true === $this->processForm($form)) {
+            $exp->setUser($user);
             $em->persist($exp);
             $em->flush();
             return $this->redirect($this->generateUrl("edit_user_experience"));
@@ -28,6 +31,7 @@ class ExperienceController extends Controller
         return $this->render(
             'CvPlatformUserBundle:Profile:experience.html.twig',
             array(
+                'experiences' => $experiences,
                 'form' => $form->createView(),
             )
         );

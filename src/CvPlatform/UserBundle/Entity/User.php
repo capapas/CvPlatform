@@ -96,6 +96,15 @@ class User extends BaseUser implements Person
     protected $country;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="other", type="string", nullable=true)
+     */
+    protected $others;
+
+
+
+    /**
      * @var ArrayCollection
      * @ORM\OneToMany(
      *  targetEntity="CvPlatform\FrontBundle\Entity\LangLevel",
@@ -125,12 +134,23 @@ class User extends BaseUser implements Person
      */
     protected $experiences;
 
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(
+     *  targetEntity="CvPlatform\FrontBundle\Entity\Skill",
+     *  mappedBy="user"
+     * )
+     *
+     */
+    protected $skills;
+
     public function __construct()
     {
         parent::__construct();
         $this->experiences = new ArrayCollection();
         $this->websites = new ArrayCollection();
         $this->langLevels = new ArrayCollection();
+        $this->skills = new ArrayCollection();
     }
 
     /**
@@ -373,51 +393,139 @@ class User extends BaseUser implements Person
         return $this->country;
     }
 
+    /**
+     *
+     * @return string
+     */
+    public function getOthers()
+    {
+        return $this->others;
+    }
+
+    /**
+     *
+     * @param string $others
+     * @return User
+     */
+    public function setOthers($others)
+    {
+        $this->others = $others;
+        return $this;
+    }
+
+    /**
+     *
+     * @param Experience $experience
+     * @return User
+     */
     public function addExperience(Experience $experience)
     {
         $this->experiences[] = $experience;
         return $this;
     }
 
+    /**
+     *
+     * @param Experience $experience
+     */
     public function removeExperience(Experience $experience)
     {
         $this->experiences->removeElement($experience);
     }
 
+    /**
+     *
+     * @return Experience
+     */
     public function getExperiences()
     {
         return $this->experiences;
     }
 
+    /**
+     *
+     * @param Website $website
+     * @return User
+     */
     public function addWebsite(Website $website)
     {
         $this->websites[] = $website;
         return $this;
     }
 
+    /**
+     *
+     * @param Website $website
+     */
     public function removeWebsite(Website $website)
     {
         $this->websites->removeElement($website);
     }
 
+    /**
+     *
+     * @return Website
+     */
     public function getWebsites()
     {
         return $this->websites;
     }
 
+    /**
+     *
+     * @param LangLevel $langLevel
+     * @return User
+     */
     public function addLangLevel(LangLevel $langLevel)
     {
         $this->langLevels[] = $langLevel;
         return $this;
     }
 
+    /**
+     *
+     * @param LangLevel $langLevel
+     */
     public function removeLangLevel(LangLevel $langLevel)
     {
         $this->langLevels->removeElement($langLevel);
     }
 
+    /**
+     *
+     * @return LangLevel
+     */
     public function getLangLevels()
     {
         return $this->langLevels;
+    }
+
+    /**
+     *
+     * @param Skill $skill
+     * @return User
+     */
+    public function addSkill(Skill $skill)
+    {
+        $this->skills[] = $skill;
+        return $this;
+    }
+
+    /**
+     *
+     * @param Skill $skill
+     */
+    public function removeSkill(Skill $skill)
+    {
+        $this->skills->removeElement($skill);
+    }
+
+    /**
+     *
+     * @return Skill
+     */
+    public function getSkills()
+    {
+        return $this->skills;
     }
 }

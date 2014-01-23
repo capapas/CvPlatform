@@ -16,11 +16,14 @@ class LangLevelController extends Controller
      */
     public function indexAction()
     {
+        $user= $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
+        $langs = $em->getRepository('CvPlatform\FrontBundle\Entity\LangLevel')->findAll();
         $lang =  new LangLevel();
         $form = $this->createForm(new LangLevelType(), $lang);
 
         if (true === $this->processForm($form)) {
+            $lang->setUser($user);
             $em->persist($lang);
             $em->flush();
             return $this->redirect($this->generateUrl("edit_user_lang"));
@@ -29,6 +32,7 @@ class LangLevelController extends Controller
         return $this->render(
             'CvPlatformUserBundle:Profile:lang.html.twig',
             array(
+                'langs' => $langs,
                 'form' => $form->createView(),
             )
         );

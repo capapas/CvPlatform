@@ -22,7 +22,7 @@ class Builder extends ContainerAware
             ));
 
             $dropdown->addChild('See Profile', array(
-                'route' => 'fos_user_profile_show'
+                'route' => 'edit_user_personal_informations'
                 )
             );
             $dropdown->addChild('Logout', array(
@@ -70,7 +70,7 @@ class Builder extends ContainerAware
         ));
 
         $menu->addChild('Others', array(
-            'route' => 'fos_user_profile_show',
+            'route' => 'edit_user_others_informations',
         ));
 
         return $menu;
