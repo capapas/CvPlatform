@@ -1,0 +1,19 @@
+{% extends 'CvPlatformUserBundle:Profile:show.html.twig' %}
+{% block personal_informations%}
+LANG
+<div class="well">
+    <div class="langs">
+        {% for lang in langs %}
+            <div class="lang">
+                {{ lang.name }}: {{ lang.level }}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="well">
+    <form method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <input type="submit" class="btn btn-primary" />
+    </form>
+</div>
+{% endblock personal_informations%}
