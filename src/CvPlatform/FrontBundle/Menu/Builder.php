@@ -21,7 +21,7 @@ class Builder extends ContainerAware
                 'caret' => true,
             ));
 
-            $dropdown->addChild('See Profile', array(
+            $dropdown->addChild('Update Profile', array(
                 'route' => 'edit_user_personal_informations'
                 )
             );
