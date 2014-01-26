@@ -9,6 +9,7 @@ use CvPlatform\FrontBundle\Entity\LangLevel;
 use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Table(name="cvplatform_user")
@@ -55,14 +56,24 @@ class User extends BaseUser implements Person
 
     /**
      * @var string
-     *
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "10",
+     *      minMessage = "Phone number is 10 numbers",
+     *      maxMessage = "Phone number is 10 numbers"
+     * )
      * @ORM\Column(name="phone", type="string", length=10, nullable=true)
      */
     protected $phone;
 
     /**
      * @var string
-     *
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "10",
+     *      minMessage = "Phone number is 10 numbers",
+     *      maxMessage = "Phone number is 10 numbers"
+     * )
      * @ORM\Column(name="cellphone", type="string", length=10, nullable=true)
      */
     protected $cellphone;
@@ -83,7 +94,12 @@ class User extends BaseUser implements Person
 
     /**
      * @var string
-     *
+     * @Assert\Length(
+     *      min = "5",
+     *      max = "5",
+     *      minMessage = "Zipcode is 5 caracteres",
+     *      maxMessage = "Zipcode is 5 caracteres"
+     * )
      * @ORM\Column(name="zipcode", type="string", length=5, nullable=true)
      */
     protected $zipcode;
