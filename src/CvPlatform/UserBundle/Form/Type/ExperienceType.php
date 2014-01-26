@@ -18,7 +18,7 @@ class ExperienceType extends AbstractType
                 'startDate',
                 'date',
                 array(
-                    'horizontal_input_wrapper_class' => 'col-lg-2',
+                    'horizontal_input_wrapper_class' => 'col-lg-3',
                     'widget' => 'choice',
                 )
             )
@@ -26,11 +26,11 @@ class ExperienceType extends AbstractType
                 'endDate',
                 'date',
                 array(
-                    'horizontal_input_wrapper_class' => 'col-lg-2',
+                    'horizontal_input_wrapper_class' => 'col-lg-3',
                     'widget' => 'choice',
                 )
             )
-            ->add('content', 'text')
+            ->add('content', 'textarea')
         ;
     }
 

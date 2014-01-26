@@ -18,17 +18,20 @@ class PersonalInformationType extends AbstractType
                 'birthdate',
                 'date',
                 array(
-                    'horizontal_input_wrapper_class' => 'col-lg-2',
-                    'widget' => 'choice',
+                    'horizontal_input_wrapper_class' => 'col-lg-3',
+                    'widget' => 'choice'
                 )
             )
-            ->add('email', 'email')
+            ->add('email', 'email', array(
+
+                'horizontal_input_wrapper_class' => 'col-lg-9'))
+
             ->add('cellphone', 'text')
             ->add('phone', 'text')
             ->add('street', 'text', array('widget_type'  => "inline"))
             ->add('city', 'text')
             ->add('zipcode', 'text')
-            ->add('country', 'country')
+            ->add('country', 'text')
         ;
     }
 
