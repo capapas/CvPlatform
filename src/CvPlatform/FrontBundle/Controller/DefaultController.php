@@ -14,4 +14,15 @@ class DefaultController extends Controller
     {
         return $this->render('CvPlatformFrontBundle::index.html.twig');
     }
+
+    /**
+     * @Route("/my-profile", name="my_profile")
+     */
+    public function myProfileAction()
+    {
+        $currentUser= $this->get('security.context')->getToken()->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('CvPlatform\UserBundle\Entity\User')->find($currentUser);
+        return $this->render('CvPlatformUserBundle:Profile:overview.html.twig', array('user' => $user));
+    }
 }

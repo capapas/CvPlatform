@@ -25,6 +25,10 @@ class Builder extends ContainerAware
                 'route' => 'edit_user_personal_informations'
                 )
             );
+            $dropdown->addChild('See my profile', array(
+                'route' => 'my_profile'
+                )
+            );
             $dropdown->addChild('Logout', array(
                 'route' => 'fos_user_security_logout'
                 )

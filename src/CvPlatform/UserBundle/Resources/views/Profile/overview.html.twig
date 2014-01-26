@@ -1,0 +1,51 @@
+{% extends 'CvPlatformUserBundle::layout.html.twig' %}
+{% block content %}
+<div class="well">
+    <div class="text-center"><a href="" class="btn btn-primary">Export your Cv to PDF</a></div>
+</div>
+<h2>Personnal Informations</h2>
+<div class="well">
+    <div><strong>Name:</strong> {{ user.firstname }} {{ user.lastname }}</div>
+    <div><strong>Birthdate:</strong> {{ user.birthdate|date("d/m/Y") }}</div>
+    <div><strong>Email:</strong> {{ user.email }}</div>
+    <div><strong>Mobile Phone:</strong> {{ user.cellphone }}</div>
+    <div><strong>Phone:</strong> {{ user.phone }}</div>
+    <div><strong>Address:</strong>
+        <div>{{ user.street }}</div>
+        <div>{{ user.city }} {{ user.zipcode }}</div>
+        <div>{{ user.country }}</div>
+    </div>
+</div>
+
+<h2>Skills</h2>
+<div class="well">
+{% for skill in user.skills %}
+    <span style="font-size: 15pt" class="label label-info">{{ skill.libel }}</span>
+{% endfor %}
+</div>
+
+<h2>Professionnal Experience</h2>
+<div class="well">
+{% for experience in user.experiences %}
+    <div >
+        <strong>{{ experience.what }}</strong> - {{ experience.place }} - ({{  experience.startDate|date("d/m/Y") }} - {{  experience.endDate|date("d/m/Y") }})
+        <p>{{ experience.content }}</p>
+    </div>
+    {% if false == loop.last %}<hr>{% endif %}
+{% endfor %}
+</div>
+
+<h2>Langs</h2>
+<div class="well">
+{% for lang in user.langLevels %}
+    <div>{{ lang.lang.libel }} - {{ lang.level }}</div>
+{% endfor %}
+</div>
+
+<h2>Others things</h2>
+<div class="well">
+<p>
+    {{ user.others }}
+</p>
+</div>
+{% endblock content %}

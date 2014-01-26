@@ -12,9 +12,16 @@ class PersonalInformationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('birthdate', 'date')
             ->add('firstname', 'text')
             ->add('lastname', 'text')
+            ->add('birthdate', 'date')
+            ->add('email', 'text')
+            ->add('cellphone', 'text')
+            ->add('phone', 'text')
+            ->add('street', 'text')
+            ->add('city', 'text')
+            ->add('zipcode', 'text')
+            ->add('country', 'text')
         ;
     }
 
