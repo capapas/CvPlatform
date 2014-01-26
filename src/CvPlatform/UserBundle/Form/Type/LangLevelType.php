@@ -15,7 +15,20 @@ class LangLevelType extends AbstractType
             ->add('lang', 'entity', array(
                 'class' => 'CvPlatformFrontBundle:Lang',
                 'property' => 'libel'))
-            ->add('level', 'integer')
+            ->add(
+                'level',
+                'choice',
+                array(
+                    'choices' => array(
+                        '1' => '1',
+                        '2' => '2',
+                        '3' => '3',
+                        '4' => '4',
+                        '5' => '5',
+                    ),
+                    'required'  => true,
+                )
+            )
         ;
     }
 
