@@ -12,6 +12,9 @@ class LangLevelType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('lang', 'entity', array(
+                'class' => 'CvPlatformFrontBundle:Lang',
+                'property' => 'libel'))
             ->add('level', 'integer')
         ;
     }
