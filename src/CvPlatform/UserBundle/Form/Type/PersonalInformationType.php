@@ -15,13 +15,13 @@ class PersonalInformationType extends AbstractType
             ->add('firstname', 'text')
             ->add('lastname', 'text')
             ->add('birthdate', 'date')
-            ->add('email', 'text')
+            ->add('email', 'email')
             ->add('cellphone', 'text')
             ->add('phone', 'text')
             ->add('street', 'text')
             ->add('city', 'text')
             ->add('zipcode', 'text')
-            ->add('country', 'text')
+            ->add('country', 'country')
         ;
     }
 

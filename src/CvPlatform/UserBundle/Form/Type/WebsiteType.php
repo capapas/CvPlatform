@@ -13,7 +13,7 @@ class WebsiteType extends AbstractType
     {
         $builder
             ->add('title', 'text')
-            ->add('url', 'text')
+            ->add('url', 'url')
         ;
     }
 
