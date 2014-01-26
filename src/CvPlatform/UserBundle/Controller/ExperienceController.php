@@ -17,7 +17,7 @@ class ExperienceController extends Controller
     {
         $user= $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
-        $experiences = $em->getRepository('CvPlatform\FrontBundle\Entity\Experience')->findAll();
+        $experiences = $em->getRepository('CvPlatform\FrontBundle\Entity\Experience')->findBy(array('user' => $user));
         $exp =  new Experience();
         $form = $this->createForm(new ExperienceType(), $exp);
 

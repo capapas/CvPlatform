@@ -17,7 +17,7 @@ class SkillController extends Controller
     {
         $user= $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
-        $skills = $em->getRepository('CvPlatform\FrontBundle\Entity\Skill')->findAll();
+        $skills = $em->getRepository('CvPlatform\FrontBundle\Entity\Skill')->findBy(array('user' => $user));
         $skill =  new Skill();
         $form = $this->createForm(new SkillType(), $skill);
 

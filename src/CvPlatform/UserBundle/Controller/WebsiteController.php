@@ -17,7 +17,7 @@ class WebsiteController extends Controller
     {
         $user= $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
-        $websites = $em->getRepository('CvPlatform\FrontBundle\Entity\Website')->findAll();
+        $websites = $em->getRepository('CvPlatform\FrontBundle\Entity\Website')->findBy(array('user' => $user));
         $website =  new Website();
         $form = $this->createForm(new WebsiteType(), $website);
 

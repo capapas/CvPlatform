@@ -18,7 +18,7 @@ class LangLevelController extends Controller
     {
         $user= $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
-        $langs = $em->getRepository('CvPlatform\FrontBundle\Entity\LangLevel')->findAll();
+        $langs = $em->getRepository('CvPlatform\FrontBundle\Entity\LangLevel')->findBy(array('user' => $user));
         $lang =  new LangLevel();
         $form = $this->createForm(new LangLevelType(), $lang);
 
