@@ -68,10 +68,9 @@ class UserInformationsController extends Controller
                 return true;
             }
             else {
-                $this->errorFlash('flash.error');
+                $this->get('session')->getFlashBag()->add('error', 'flash.error');
             }
         }
-
         return false;
     }
 }
