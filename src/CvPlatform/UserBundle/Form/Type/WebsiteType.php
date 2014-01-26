@@ -26,6 +26,6 @@ class WebsiteType extends AbstractType
 
     public function getName()
     {
-        return 'cvplatform_userbundle_websitetype';
+        return 'add_website';
     }
 }

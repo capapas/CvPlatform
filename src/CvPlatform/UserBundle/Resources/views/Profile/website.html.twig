@@ -1,11 +1,11 @@
 {% extends 'CvPlatformUserBundle:Profile:show.html.twig' %}
 {% block personal_informations%}
-Websites
+<h2>Websites</h2>
 <div class="well">
     <div class="websites">
         {% for website in websites %}
             <div class="website">
-                {{ website.title }}: {{ website.url }}
+                {{ website.title }}: <a href="{{ website.url }}">{{ website.url }}</a>
             </div>
         {% endfor %}
     </div>

@@ -28,6 +28,6 @@ class LangLevelType extends AbstractType
 
     public function getName()
     {
-        return 'cvplatform_userbundle_langtype';
+        return 'add_lang';
     }
 }

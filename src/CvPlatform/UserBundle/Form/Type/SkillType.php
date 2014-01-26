@@ -25,6 +25,6 @@ class SkillType extends AbstractType
 
     public function getName()
     {
-        return 'cvplatform_userbundle_skilltype';
+        return 'add_skill';
     }
 }

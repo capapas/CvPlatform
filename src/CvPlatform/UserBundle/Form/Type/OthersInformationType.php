@@ -25,6 +25,6 @@ class OthersInformationType extends AbstractType
 
     public function getName()
     {
-        return 'cvplatform_userbundle_othersinformationstype';
+        return 'edit_other_informations';
     }
 }

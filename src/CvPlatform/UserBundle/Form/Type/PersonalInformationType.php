@@ -14,11 +14,18 @@ class PersonalInformationType extends AbstractType
         $builder
             ->add('firstname', 'text')
             ->add('lastname', 'text')
-            ->add('birthdate', 'date')
+            ->add(
+                'birthdate',
+                'date',
+                array(
+                    'horizontal_input_wrapper_class' => 'col-lg-2',
+                    'widget' => 'choice',
+                )
+            )
             ->add('email', 'email')
             ->add('cellphone', 'text')
             ->add('phone', 'text')
-            ->add('street', 'text')
+            ->add('street', 'text', array('widget_type'  => "inline"))
             ->add('city', 'text')
             ->add('zipcode', 'text')
             ->add('country', 'country')
@@ -34,6 +41,6 @@ class PersonalInformationType extends AbstractType
 
     public function getName()
     {
-        return 'cvplatform_userbundle_personalinformationstype';
+        return 'update_personnal_inforamtions';
     }
 }
