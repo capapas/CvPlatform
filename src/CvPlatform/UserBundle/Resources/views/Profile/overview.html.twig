@@ -17,6 +17,13 @@
     </div>
 </div>
 
+<h2>Website</h2>
+<div class="well">
+{% for website in user.websites %}
+    <div><strong>{{website.title}}:</strong> <a href="{{website.url}}">{{website.url}}</a></div>
+{% endfor %}
+</div>
+
 <h2>Skills</h2>
 <div class="well">
 {% for skill in user.skills %}
@@ -38,7 +45,10 @@
 <h2>Langs</h2>
 <div class="well">
 {% for lang in user.langLevels %}
-    <div>{{ lang.lang.libel }} - {{ lang.level }}</div>
+    <div>{{ lang.lang.libel }} -
+    {% for i in 1..lang.level %}
+     ★
+    {% endfor %}</div>
 {% endfor %}
 </div>
 
