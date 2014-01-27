@@ -5,7 +5,7 @@
     <div class="experiences">
         {% for experience in experiences %}
             <div class="experience">
-                {{ experience.what }}
+                {{ experience.what }} <a class="btn btn-danger btn-xs" href="{{ path('delete_user_experience', { 'id': experience.id }) }}">delete</a>
             </div>
         {% endfor %}
     </div>

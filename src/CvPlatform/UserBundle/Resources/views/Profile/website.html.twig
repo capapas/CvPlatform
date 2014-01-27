@@ -5,7 +5,7 @@
     <div class="websites">
         {% for website in websites %}
             <div class="website">
-                {{ website.title }}: <a href="{{ website.url }}">{{ website.url }}</a>
+                {{ website.title }}: <a href="{{ website.url }}">{{ website.url }}</a> <a class="btn btn-danger btn-xs" href="{{ path('delete_user_website', { 'id': website.id }) }}">delete</a>
             </div>
         {% endfor %}
     </div>

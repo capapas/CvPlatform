@@ -8,6 +8,7 @@
                 {% for i in 1..lang.level %}
                     ★
                  {% endfor %}
+                <a class="btn btn-danger btn-xs" href="{{ path('delete_user_lang', { 'id': lang.id }) }}">delete</a>
             </div>
         {% endfor %}
     </div>

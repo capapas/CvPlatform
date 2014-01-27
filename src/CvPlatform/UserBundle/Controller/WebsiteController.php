@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use CvPlatform\UserBundle\Form\Type\WebsiteType;
 use CvPlatform\FrontBundle\Entity\Website;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class WebsiteController extends Controller
 {
@@ -39,17 +40,22 @@ class WebsiteController extends Controller
     }
 
     /**
-     * @Route("/delete-website", name="delete_user_website")
-     * @Method({"POST"})
+     * @Route("/delete-website/{id}", name="delete_user_website")
      */
-    public function deleteAction()
+    public function deleteAction(Website $website)
     {
-        $exp =  new Website();
+        $user= $this->get('security.context')->getToken()->getUser();
+        $em = $this->getDoctrine()->getManager();
+        if ($website->getUser() == $user) {
+            $em->remove($website);
+            $em->flush();
+        }
 
-        $form = $this->createForm(new WebsiteType(), $exp);
+        $form = $this->createForm(new WebsiteType(), new Website());
         return $this->render(
             'CvPlatformUserBundle:Profile:website.html.twig',
             array(
+                'websites' => $user->getWebsites(),
                 'form' => $form->createView(),
             )
         );

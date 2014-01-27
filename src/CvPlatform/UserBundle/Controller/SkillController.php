@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use CvPlatform\UserBundle\Form\Type\SkillType;
 use CvPlatform\FrontBundle\Entity\Skill;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class SkillController extends Controller
 {
@@ -38,17 +39,22 @@ class SkillController extends Controller
     }
 
     /**
-     * @Route("/delete-skill", name="delete_user_skill")
+     * @Route("/delete-skill/{id}", name="delete_user_skill")
      */
-    public function deleteAction()
+    public function deleteAction(Skill $skill)
     {
+        $user= $this->get('security.context')->getToken()->getUser();
+        $em = $this->getDoctrine()->getManager();
+        if ($skill->getUser() == $user) {
+            $em->remove($skill);
+            $em->flush();
+        }
 
-        $exp =  new Skill();
-
-        $form = $this->createForm(new SkillType(), $exp);
+        $form = $this->createForm(new SkillType(), new Skill());
         return $this->render(
             'CvPlatformUserBundle:Profile:skill.html.twig',
             array(
+                'skills' => $user->getSkills(),
                 'form' => $form->createView(),
             )
         );
