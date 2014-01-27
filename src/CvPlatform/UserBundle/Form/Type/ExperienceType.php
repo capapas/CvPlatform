@@ -14,9 +14,23 @@ class ExperienceType extends AbstractType
         $builder
             ->add('what', 'text')
             ->add('place', 'text')
-            ->add('startDate', 'date')
-            ->add('endDate', 'date')
-            ->add('content', 'text')
+            ->add(
+                'startDate',
+                'date',
+                array(
+                    'horizontal_input_wrapper_class' => 'col-lg-3',
+                    'widget' => 'choice',
+                )
+            )
+            ->add(
+                'endDate',
+                'date',
+                array(
+                    'horizontal_input_wrapper_class' => 'col-lg-3',
+                    'widget' => 'choice',
+                )
+            )
+            ->add('content', 'textarea')
         ;
     }
 
@@ -29,6 +43,6 @@ class ExperienceType extends AbstractType
 
     public function getName()
     {
-        return 'cvplatform_userbundle_experiencetype';
+        return 'add_professionnal_experiences';
     }
 }

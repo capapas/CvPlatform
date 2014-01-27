@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use CvPlatform\UserBundle\Form\Type\LangLevelType;
 use CvPlatform\FrontBundle\Entity\LangLevel;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 
 class LangLevelController extends Controller
@@ -18,7 +19,7 @@ class LangLevelController extends Controller
     {
         $user= $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
-        $langs = $em->getRepository('CvPlatform\FrontBundle\Entity\LangLevel')->findAll();
+        $langs = $em->getRepository('CvPlatform\FrontBundle\Entity\LangLevel')->findBy(array('user' => $user));
         $lang =  new LangLevel();
         $form = $this->createForm(new LangLevelType(), $lang);
 
@@ -39,18 +40,23 @@ class LangLevelController extends Controller
     }
 
     /**
-     * @Route("/delete-lang", name="delete_user_lang")
-     * @Method({"POST"})
+     * @Route("/delete-lang/{id}", name="delete_user_lang")
      */
-    public function deleteAction()
+    public function deleteAction(LangLevel $langLevel)
     {
 
-        $exp =  new Lang();
+        $user= $this->get('security.context')->getToken()->getUser();
+        $em = $this->getDoctrine()->getManager();
+        if ($langLevel->getUser() == $user) {
+            $em->remove($langLevel);
+            $em->flush();
+        }
 
-        $form = $this->createForm(new LangType(), $exp);
+        $form = $this->createForm(new LangLevelType(), new LangLevel());
         return $this->render(
             'CvPlatformUserBundle:Profile:lang.html.twig',
             array(
+                'langs' => $user->getLangLevels(),
                 'form' => $form->createView(),
             )
         );
@@ -68,7 +74,7 @@ class LangLevelController extends Controller
                 return true;
             }
             else {
-                //$this->errorFlash('flash.error');
+                $this->get('session')->getFlashBag()->add('error', 'flash.error');
             }
         }
 

@@ -12,9 +12,26 @@ class PersonalInformationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('birthdate', 'date')
             ->add('firstname', 'text')
             ->add('lastname', 'text')
+            ->add(
+                'birthdate',
+                'date',
+                array(
+                    'horizontal_input_wrapper_class' => 'col-lg-3',
+                    'widget' => 'choice'
+                )
+            )
+            ->add('email', 'email', array(
+
+                'horizontal_input_wrapper_class' => 'col-lg-9'))
+
+            ->add('cellphone', 'text')
+            ->add('phone', 'text')
+            ->add('street', 'text', array('widget_type'  => "inline"))
+            ->add('city', 'text')
+            ->add('zipcode', 'text')
+            ->add('country', 'text')
         ;
     }
 
@@ -27,6 +44,6 @@ class PersonalInformationType extends AbstractType
 
     public function getName()
     {
-        return 'cvplatform_userbundle_personalinformationstype';
+        return 'update_personnal_inforamtions';
     }
 }

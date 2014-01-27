@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use CvPlatform\FrontBundle\Entity\Experience;
 use CvPlatform\UserBundle\Form\Type\ExperienceType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class ExperienceController extends Controller
 {
@@ -17,7 +18,7 @@ class ExperienceController extends Controller
     {
         $user= $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
-        $experiences = $em->getRepository('CvPlatform\FrontBundle\Entity\Experience')->findAll();
+        $experiences = $em->getRepository('CvPlatform\FrontBundle\Entity\Experience')->findBy(array('user' => $user));
         $exp =  new Experience();
         $form = $this->createForm(new ExperienceType(), $exp);
 
@@ -38,23 +39,25 @@ class ExperienceController extends Controller
     }
 
     /**
-     * @Route("/delete-experience", name="delete_user_experience")
-     * @Method({"POST"})
+     * @Route("/delete-experience/{id}", name="delete_user_experience")
      */
-    public function deleteAction()
+    public function deleteAction(Experience $exp)
     {
-
-        $exp =  new Experience();
-
-        $form = $this->createForm(new ExperienceType(), $exp);
+        $user= $this->get('security.context')->getToken()->getUser();
+        $em = $this->getDoctrine()->getManager();
+        if ($exp->getUser() == $user) {
+            $em->remove($exp);
+            $em->flush();
+        }
+        $form = $this->createForm(new ExperienceType(), new Experience());
         return $this->render(
             'CvPlatformUserBundle:Profile:experience.html.twig',
             array(
+                'experiences' => $user->getExperiences(),
                 'form' => $form->createView(),
             )
         );
     }
-
     protected function processForm($form)
     {
         $request = $this->getRequest();
@@ -67,10 +70,9 @@ class ExperienceController extends Controller
                 return true;
             }
             else {
-                $this->errorFlash('flash.error');
+                $this->get('session')->getFlashBag()->add('error', 'flash.error');
             }
         }
-
         return false;
     }
 }

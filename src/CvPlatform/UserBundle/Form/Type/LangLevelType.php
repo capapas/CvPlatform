@@ -12,7 +12,23 @@ class LangLevelType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('level', 'integer')
+            ->add('lang', 'entity', array(
+                'class' => 'CvPlatformFrontBundle:Lang',
+                'property' => 'libel'))
+            ->add(
+                'level',
+                'choice',
+                array(
+                    'choices' => array(
+                        '1' => '1',
+                        '2' => '2',
+                        '3' => '3',
+                        '4' => '4',
+                        '5' => '5',
+                    ),
+                    'required'  => true,
+                )
+            )
         ;
     }
 
@@ -25,6 +41,6 @@ class LangLevelType extends AbstractType
 
     public function getName()
     {
-        return 'cvplatform_userbundle_langtype';
+        return 'add_lang';
     }
 }

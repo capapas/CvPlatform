@@ -13,7 +13,7 @@ class WebsiteType extends AbstractType
     {
         $builder
             ->add('title', 'text')
-            ->add('url', 'text')
+            ->add('url', 'url')
         ;
     }
 
@@ -26,6 +26,6 @@ class WebsiteType extends AbstractType
 
     public function getName()
     {
-        return 'cvplatform_userbundle_websitetype';
+        return 'add_website';
     }
 }

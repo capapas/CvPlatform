@@ -1,11 +1,11 @@
 {% extends 'CvPlatformUserBundle:Profile:show.html.twig' %}
 {% block personal_informations%}
-EXP
+<h2>Professional Experiences</h2>
 <div class="well">
     <div class="experiences">
         {% for experience in experiences %}
             <div class="experience">
-                {{ experience.what }}
+                {{ experience.what }} <a class="btn btn-danger btn-xs" href="{{ path('delete_user_experience', { 'id': experience.id }) }}">delete</a>
             </div>
         {% endfor %}
     </div>
