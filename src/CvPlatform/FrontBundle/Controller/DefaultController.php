@@ -44,22 +44,9 @@ class DefaultController extends Controller
             200,
             array(
                 'Content-Type'          => 'application/pdf',
-                'Content-Disposition'   => 'attachment; filename="file.pdf"'
-            )
-        );
-
-
-
-        //$html = $this->renderView('CvPlatformUserBundle:Profile:export.html.twig', array('user' => $user));
-/*
-        return new Response(
-            $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
-            200,
-            array(
-                'Content-Type'          => 'application/pdf',
                 'Content-Disposition'   => 'attachment; filename="cv_' . $user->getUsername() . '.pdf"'
             )
-        );*/
+        );
     }
 
      /**
