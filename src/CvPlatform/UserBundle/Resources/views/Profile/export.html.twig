@@ -60,7 +60,7 @@
         <hr style="border-color: yellowgreen">
         <div class="websites">
             {% for website in user.websites %}
-                <div><strong>{{website.title}}:</strong> {{website.url}}</div>
+                <div><strong>{{website.title}}:</strong> <a href="{{website.url}}">{{website.url}}</a></div>
             {% endfor %}
         </div>
         <h2>Other Informations</h2>
