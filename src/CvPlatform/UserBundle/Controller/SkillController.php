@@ -9,6 +9,9 @@ use CvPlatform\UserBundle\Form\Type\SkillType;
 use CvPlatform\FrontBundle\Entity\Skill;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
+/**
+ * @Route("/profile")
+ */
 class SkillController extends Controller
 {
     /**

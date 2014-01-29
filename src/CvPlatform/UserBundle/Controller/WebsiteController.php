@@ -9,6 +9,9 @@ use CvPlatform\UserBundle\Form\Type\WebsiteType;
 use CvPlatform\FrontBundle\Entity\Website;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
+/**
+ * @Route("/profile")
+ */
 class WebsiteController extends Controller
 {
     /**

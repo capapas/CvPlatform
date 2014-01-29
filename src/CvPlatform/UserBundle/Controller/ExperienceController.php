@@ -9,6 +9,9 @@ use CvPlatform\UserBundle\Form\Type\ExperienceType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
+/**
+ * @Route("/profile")
+ */
 class ExperienceController extends Controller
 {
     /**
