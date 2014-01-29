@@ -9,6 +9,9 @@ use CvPlatform\UserBundle\Form\Type\PersonalInformationType;
 use CvPlatform\UserBundle\Entity\User;
 use CvPlatform\UserBundle\Form\Type\OthersInformationType;
 
+/**
+ * @Route("/profile")
+ */
 class UserInformationsController extends Controller
 {
     /**

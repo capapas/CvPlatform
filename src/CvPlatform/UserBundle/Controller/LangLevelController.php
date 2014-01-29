@@ -9,7 +9,9 @@ use CvPlatform\FrontBundle\Entity\LangLevel;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
-
+/**
+ * @Route("/profile")
+ */
 class LangLevelController extends Controller
 {
     /**
