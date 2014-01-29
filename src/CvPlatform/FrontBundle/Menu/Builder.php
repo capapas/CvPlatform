@@ -69,7 +69,7 @@ class Builder extends ContainerAware
             'route' => 'edit_user_experience',
         ));
 
-        $menu->addChild('Langs', array(
+        $menu->addChild('Languages', array(
             'route' => 'edit_user_lang',
         ));
 
