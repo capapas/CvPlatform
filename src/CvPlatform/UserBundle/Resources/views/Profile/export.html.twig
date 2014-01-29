@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" href="cv_print_stylesheet.css" media="print" />
+    </head>
+    <body>
+        <div class="contact_info">
+            <div><strong>Name:</strong> {{ user.firstname }} {{ user.lastname }}</div>
+            <div><strong>Birthdate:</strong> {{ user.birthdate|date("d/m/Y") }}</div>
+            <div><strong>Email:</strong> {{ user.email }}</div>
+            <div><strong>Mobile Phone:</strong> {{ user.cellphone }}</div>
+            <div><strong>Phone:</strong> {{ user.phone }}</div>
+            <div><strong>Address:</strong>
+                <div>{{ user.street }}</div>
+                <div>{{ user.city }} {{ user.zipcode }}</div>
+                <div>{{ user.country }}</div>
+            </div>
+        </div>
+        <h2>Skills</h2>
+        <hr>
+        <div class="skills">
+            {% for skill in user.skills %}
+                <span style="font-size: 15pt" class="label label-info">{{ skill.libel }}</span>
+            {% endfor %}
+        </div>
+        <h2>Languages</h2>
+        <hr>
+        <div class="languages">
+            {% for lang in user.langLevels %}
+                <div>{{ lang.lang.libel }} -
+                {% for i in 1..lang.level %}
+                 ★
+                {% endfor %}</div>
+            {% endfor %}
+        </div>
+        <h2>Experiences</h2>
+        <hr>
+        <div class="experiences">
+            {% for experience in user.experiences %}
+                <div >
+                    <strong>{{ experience.what }}</strong> - {{ experience.place }} - ({{  experience.startDate|date("d/m/Y") }} - {{  experience.endDate|date("d/m/Y") }})
+                    <p>{{ experience.content }}</p>
+                </div>
+                {% if false == loop.last %}<hr>{% endif %}
+            {% endfor %}
+        </div>
+        <h2>Websites</h2>
+        <hr>
+        <div class="websites">
+            {% for website in user.websites %}
+                <div><strong>{{website.title}}:</strong> {{website.url}}</div>
+            {% endfor %}
+        </div>
+        <h2>Other Informations</h2>
+        <hr>
+        <div class="other">
+            {{ user.others }}
+        </div>
+    </body>
+</html>
