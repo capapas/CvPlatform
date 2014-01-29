@@ -39,7 +39,6 @@ class WebsiteController extends Controller
                 'form' => $form->createView(),
             )
         );
-
     }
 
     /**
@@ -54,14 +53,8 @@ class WebsiteController extends Controller
             $em->flush();
         }
 
-        $form = $this->createForm(new WebsiteType(), new Website());
-        return $this->render(
-            'CvPlatformUserBundle:Profile:website.html.twig',
-            array(
-                'websites' => $user->getWebsites(),
-                'form' => $form->createView(),
-            )
-        );
+        return $this->redirect($this->generateUrl('edit_user_website'));
+
     }
 
     protected function processForm($form)

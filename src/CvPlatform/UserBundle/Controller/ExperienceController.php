@@ -52,14 +52,8 @@ class ExperienceController extends Controller
             $em->remove($exp);
             $em->flush();
         }
-        $form = $this->createForm(new ExperienceType(), new Experience());
-        return $this->render(
-            'CvPlatformUserBundle:Profile:experience.html.twig',
-            array(
-                'experiences' => $user->getExperiences(),
-                'form' => $form->createView(),
-            )
-        );
+        return $this->redirect($this->generateUrl('edit_user_experience'));
+
     }
     protected function processForm($form)
     {
