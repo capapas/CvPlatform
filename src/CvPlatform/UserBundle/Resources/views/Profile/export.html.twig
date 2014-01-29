@@ -28,7 +28,9 @@
         <hr style="border-color: yellowgreen">
         <div class="skills">
             {% for skill in user.skills %}
-                <span style="font-size: 15pt" class="label label-info">{{ skill.libel }}</span>
+                <div style="float:left; margin: 15px">
+                    <span style="font-size: 15pt" class="label label-info">{{ skill.libel }}</span>
+                </div>
             {% endfor %}
         </div>
         <h2>Languages</h2>
