@@ -52,15 +52,7 @@ class SkillController extends Controller
             $em->remove($skill);
             $em->flush();
         }
-
-        $form = $this->createForm(new SkillType(), new Skill());
-        return $this->render(
-            'CvPlatformUserBundle:Profile:skill.html.twig',
-            array(
-                'skills' => $user->getSkills(),
-                'form' => $form->createView(),
-            )
-        );
+        return $this->redirect($this->generateUrl('edit_user_skill'));
     }
 
     protected function processForm($form)

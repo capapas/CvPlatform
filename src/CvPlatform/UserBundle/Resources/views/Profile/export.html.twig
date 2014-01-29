@@ -5,16 +5,23 @@
         <link rel="stylesheet" type="text/css" href="cv_print_stylesheet.css" media="print" />
     </head>
     <body>
-        <div class="contact_info">
-            <div style="color: #356635"><strong>{{ user.firstname }} {{ user.lastname }}</strong> </div>
-            <div><strong style="color: #356635">Birthdate:</strong> {{ user.birthdate|date("d/m/Y") }}</div>
-            <div><strong style="color: #356635">Email:</strong> {{ user.email }}</div>
-            <div><strong style="color: #356635">Mobile Phone:</strong> {{ user.cellphone }}</div>
-            <div><strong style="color: #356635">Phone:</strong> {{ user.phone }}</div>
-            <div><strong style="color: #356635">Address:</strong>
-                <div>{{ user.street }}</div>
-                <div>{{ user.city }} {{ user.zipcode }}</div>
-                <div>{{ user.country }}</div>
+        <div>
+            <div class="contact_info" style="float:left;">
+                <div style="color: #356635"><strong>{{ user.firstname }} {{ user.lastname }}</strong> </div>
+                <div><strong style="color: #356635">Birthdate:</strong> {{ user.birthdate|date("d/m/Y") }}</div>
+                <div><strong style="color: #356635">Email:</strong> {{ user.email }}</div>
+                <div><strong style="color: #356635">Mobile Phone:</strong> {{ user.cellphone }}</div>
+                <div><strong style="color: #356635">Phone:</strong> {{ user.phone }}</div>
+                <div><strong style="color: #356635">Address:</strong>
+                    <div>{{ user.street }}</div>
+                    <div>{{ user.city }} {{ user.zipcode }}</div>
+                    <div>{{ user.country }}</div>
+                </div>
+            </div>
+                <div align="right">
+                <img style="border: 2px solid yellowgreen;" src="http://{{ app.request.host }}{{ qrcode_url(
+                    'http://' ~ app.request.host  ~ path('show_profile', { 'id': user.id })
+                )}}" />
             </div>
         </div>
         <h2>Skills</h2>

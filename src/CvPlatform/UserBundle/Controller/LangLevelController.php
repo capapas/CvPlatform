@@ -53,15 +53,7 @@ class LangLevelController extends Controller
             $em->remove($langLevel);
             $em->flush();
         }
-
-        $form = $this->createForm(new LangLevelType(), new LangLevel());
-        return $this->render(
-            'CvPlatformUserBundle:Profile:lang.html.twig',
-            array(
-                'langs' => $user->getLangLevels(),
-                'form' => $form->createView(),
-            )
-        );
+        return $this->redirect($this->generateUrl('edit_user_lang'));
     }
 
     protected function processForm($form)
