@@ -6,6 +6,7 @@ use Mhor\CvToPdfBundle\Model\Person;
 use CvPlatform\FrontBundle\Entity\Experience;
 use CvPlatform\FrontBundle\Entity\Website;
 use CvPlatform\FrontBundle\Entity\LangLevel;
+use CvPlatform\FrontBundle\Entity\Skill;
 use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
