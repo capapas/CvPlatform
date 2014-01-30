@@ -37,14 +37,14 @@ class User extends BaseUser implements Person
     /**
      * @var string
      *
-     * @ORM\Column(name="lastname", type="string", length=255)
+     * @ORM\Column(name="lastname", type="string", nullable=true, length=255)
      */
     protected $lastname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="firstname", type="string", length=255)
+     * @ORM\Column(name="firstname", type="string", nullable=true, length=255)
      */
     private $firstname;
 
