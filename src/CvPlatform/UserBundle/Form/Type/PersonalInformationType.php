@@ -18,6 +18,8 @@ class PersonalInformationType extends AbstractType
                 'birthdate',
                 'date',
                 array(
+                    'years' => range(1940,2000),
+                    'empty_value' => array('year' => 'Year', 'month' => 'Month', 'day' => 'Day'),
                     'horizontal_input_wrapper_class' => 'col-lg-3',
                     'widget' => 'choice'
                 )

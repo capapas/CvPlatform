@@ -18,6 +18,8 @@ class ExperienceType extends AbstractType
                 'startDate',
                 'date',
                 array(
+                    'years' => range(1950,2014),
+                    'empty_value' => array('year' => 'Year', 'month' => 'Month', 'day' => 'Day'),
                     'horizontal_input_wrapper_class' => 'col-lg-3',
                     'widget' => 'choice',
                 )
@@ -26,6 +28,8 @@ class ExperienceType extends AbstractType
                 'endDate',
                 'date',
                 array(
+                    'years' => range(1950,2014),
+                    'empty_value' => array('year' => 'Year', 'month' => 'Month', 'day' => 'Day'),
                     'horizontal_input_wrapper_class' => 'col-lg-3',
                     'widget' => 'choice',
                 )
