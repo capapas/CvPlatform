@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new Endroid\Bundle\QrCodeBundle\EndroidQrCodeBundle(),
             new CvPlatform\FrontBundle\CvPlatformFrontBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+            new Genemu\Bundle\FormBundle\GenemuFormBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

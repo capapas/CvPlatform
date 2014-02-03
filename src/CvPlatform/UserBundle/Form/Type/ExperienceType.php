@@ -16,22 +16,22 @@ class ExperienceType extends AbstractType
             ->add('place', 'text')
             ->add(
                 'startDate',
-                'date',
+                'genemu_jquerydate',
                 array(
                     'years' => range(1950,2014),
                     'empty_value' => array('year' => 'Year', 'month' => 'Month', 'day' => 'Day'),
-                    'horizontal_input_wrapper_class' => 'col-lg-3',
-                    'widget' => 'choice',
+                    'horizontal_input_wrapper_class' => 'col-lg-9',
+                    'widget' => 'single_text',
                 )
             )
             ->add(
                 'endDate',
-                'date',
+                'genemu_jquerydate',
                 array(
                     'years' => range(1950,2014),
                     'empty_value' => array('year' => 'Year', 'month' => 'Month', 'day' => 'Day'),
-                    'horizontal_input_wrapper_class' => 'col-lg-3',
-                    'widget' => 'choice',
+                    'horizontal_input_wrapper_class' => 'col-lg-9',
+                    'widget' => 'single_text',
                 )
             )
             ->add('content', 'textarea')
