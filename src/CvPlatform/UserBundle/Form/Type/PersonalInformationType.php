@@ -16,10 +16,12 @@ class PersonalInformationType extends AbstractType
             ->add('lastname', 'text')
             ->add(
                 'birthdate',
-                'date',
+                'genemu_jquerydate',
                 array(
-                    'horizontal_input_wrapper_class' => 'col-lg-3',
-                    'widget' => 'choice'
+                    'years' => range(1940,2000),
+                    'empty_value' => array('year' => 'Year', 'month' => 'Month', 'day' => 'Day'),
+                    'horizontal_input_wrapper_class' => 'col-lg-9',
+                    'widget' => 'single_text'
                 )
             )
             ->add('email', 'email', array(

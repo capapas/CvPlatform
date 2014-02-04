@@ -28,7 +28,8 @@
         "knplabs/knp-paginator-bundle": "2.3.*",
         "knplabs/knp-menu-bundle": "2.0.x-dev",
         "knplabs/knp-menu": "2.0.*@dev",
-        "mhor/cv-to-pdf-bundle": "dev-master"
+        "mhor/cv-to-pdf-bundle": "dev-master",
+        "genemu/form-bundle": "2.2.*"
     },
     "scripts": {
         "post-install-cmd": [

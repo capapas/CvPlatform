@@ -1,5 +1,11 @@
 {% extends 'CvPlatformUserBundle::layout.html.twig' %}
 
+{% block head_script %}
+    {{ parent() }}
+    {{ form_javascript(form) }}
+    {{ form_stylesheet(form) }}
+{% endblock head_script %}
+
 {% block content %}
         <div style="float:left;  width: 140px;">
         {% block sideMenu %}
